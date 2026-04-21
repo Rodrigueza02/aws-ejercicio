@@ -11,7 +11,9 @@ const dbConfig = {
 };
 
 // Crear el pool de conexiones fuera del handler para reutilizarlo
-// Esto es crucial para mejorar el rendimiento en Lambda, ya que las funciones pueden reutilizar conexiones existentes en ejecuciones posteriores.
+//Esto es crucial para mejorar el rendimiento en Lambda, ya que las funciones pueden reutilizar conexiones existentes en ejecuciones posteriores.
+// Al mantener el pool fuera del handler, evitamos la sobrecarga de crear una nueva conexión a la base de datos cada vez que se invoca la función Lambda, lo que puede ser costoso en términos de tiempo y recursos.
+
 let pool;
 // cloud computing!!!!
 exports.handler = async (event) => {
